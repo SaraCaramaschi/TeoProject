@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TeoProject</string>
+    <string name="title_activity_menu">Menu</string>
+    <string name="ape1">Cocktail gamberi</string>
+    <string name="ape2">Involtini primavera</string>
+    <string name="ape3">Nuvole di drago</string>
+</resources>
