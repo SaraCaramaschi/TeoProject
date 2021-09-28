@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         rvTodoItems.adapter = todoAdapter
         rvTodoItems.layoutManager = LinearLayoutManager(this)
 
-        btnAddTodo.setOnClickListener{
+        btnAddTodo.setOnClickListener{  // funziona
             val todoTitle = etTodoTitle.text.toString()
             if(todoTitle.isNotEmpty()){
                 val todo = Todo(todoTitle)
@@ -27,11 +27,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        btnDeleteDoneTodo.setOnClickListener {
+        btnDeleteDoneTodo.setOnClickListener { // funziona
             todoAdapter.deleteDoneTodos()
         }
 
-        val bottoneMenu = findViewById<Button>(R.id.btnMenu)
+        val bottoneMenu = findViewById<Button>(R.id.btnMenu) // funziona
         bottoneMenu.setOnClickListener {
                 val intent = Intent(this, Menu::class.java)
                 startActivity(intent)

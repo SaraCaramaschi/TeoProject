@@ -27,7 +27,6 @@ class TodoAdaptor(
     fun addTodo(todo:Todo){
         todos.add(todo)
         notifyItemInserted(todos.size - 1)
-
     }
 
     fun deleteDoneTodos(){
