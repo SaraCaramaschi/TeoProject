@@ -10,16 +10,24 @@ class Menu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 
-        val btnApe = findViewById<Button>(R.id.btnApe) // non funziona
-        btnApe.setOnClickListener {
+        val btnApetizzers = findViewById<Button>(R.id.btnApe) // funziona
+        btnApetizzers.setOnClickListener {
             val intent = Intent(this, Appetizers::class.java)
             startActivity(intent)
         }
 
-        val btnBackToMain = findViewById<Button>(R.id.btnBackToMenu) // funziona
+        val btnBackToMain = findViewById<Button>(R.id.btnBack) // funziona
         btnBackToMain.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
+        val btnMainCourses = findViewById<Button>(R.id.btnMain) // funziona
+        btnMainCourses.setOnClickListener {
+            val intent = Intent(this, MainCourses::class.java)
+            startActivity(intent)
+        }
+
+
     }
 }
