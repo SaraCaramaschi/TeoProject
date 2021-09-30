@@ -1,40 +1,55 @@
 package com.example.teoproject.data.model
 
-import android.content.Context
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.example.teoproject.R
-import com.example.teoproject.Todo
-import com.example.teoproject.TodoAdaptor
+import com.google.firebase.firestore.auth.User
 import kotlinx.android.synthetic.main.item_todo.view.*
+import java.nio.file.attribute.UserDefinedFileAttributeView
+
 
 class DishesAdapter(
-    private val context: Context,
-    private val dataset: List<Dishes>):
+    private val context: Activity,
+    private val arrayList: ArrayList<Dishes>):
+    ArrayAdapter<Dishes>(context, R.layout.item_dishes, arrayList){
 
-    RecyclerView.Adapter<DishesAdapter.DishesViewHolder>()  {
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup):View {
 
-    class DishesViewHolder( private val view: View): RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.list_item)
+            val inflater: LayoutInflater = LayoutInflater.from(context)
+            val view: View = inflater.inflate(R.layout.item_dishes, null)
+
+            val imageView: ImageView = view.findViewById(R.id.Pic)  // ids from xml design file
+            val name: TextView = view.findViewById(R.id.Name)
+            //val ingr: TextView = view.findViewById(R.id.Ingredienti)
+            //val howmany: TextView = view.findViewById(R.id.howmany)
+            //val toBuy: Boolean = view.findViewById(R.id.t)
+
+            imageView.setImageResource(arrayList[position].imageId)
+            name.text = arrayList[position].name.toString()
+            //ingr.text = arrayList[position].ingredients
+            //howmany.text = arrayList[position].howmany
+
+            return view
+        }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DishesViewHolder {
-        val adapterLayout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_dishes, parent, false)
-        return DishesViewHolder(adapterLayout)
-    }
-
-    override fun onBindViewHolder(holder: DishesViewHolder, position: Int) {
-        val item = dataset[position]
-        holder.textView.text =  context.resources.getString(item.stringId)
-    }
-
-    override fun getItemCount(): Int {
-        return dataset.size
-    }
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+

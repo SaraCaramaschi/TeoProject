@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeoProject">
         <activity
+            android:name=".data.model.SingleDish"
+            android:exported="true" />
+        <activity
             android:name=".MainCourses"
             android:exported="true" />
         <activity
