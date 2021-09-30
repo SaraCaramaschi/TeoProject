@@ -16,12 +16,6 @@ class Menu : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val btnBackToMain = findViewById<Button>(R.id.btnBack) // funziona
-        btnBackToMain.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
         val btnMainCourses = findViewById<Button>(R.id.btnMain) // funziona
         btnMainCourses.setOnClickListener {
             val intent = Intent(this, MainCourses::class.java)

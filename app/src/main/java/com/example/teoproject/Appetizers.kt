@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.ListView
 import com.example.teoproject.data.model.Dishes
 import com.example.teoproject.data.model.DishesAdapter
+import com.example.teoproject.data.model.SingleDish
 import com.example.teoproject.databinding.ActivityAppetizersBinding
 import com.example.teoproject.databinding.ActivityMainBinding
 
@@ -17,13 +18,13 @@ class Appetizers : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityAppetizersBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_appetizers)
         setContentView(binding.root)
 
         val imageId = intArrayOf(R.drawable.sara,R.drawable.sara)
         val name = arrayOf("Cocktail Gamberi","Involtini")
-
 
         for (i in name.indices){
             val dish = Dishes(name[i] ,imageId[i])
@@ -35,24 +36,18 @@ class Appetizers : AppCompatActivity() {
         binding.ListItem.setOnItemClickListener { parent, view, position, id ->
             val name = name[position]
             val image = imageId[position]
-            val i = Intent(this, Dishes::class.java)
-            i.putExtra("name",name)
-            i.putExtra("imageId",imageId)
+            val i = Intent(this, SingleDish::class.java)
+            i.putExtra("name", name)
+            i.putExtra("imageId", imageId)
             startActivity(i)
         }
+
         //val myDataset = Datasource().loadDishes()
         //val recyclerView = findViewById<RecyclerView>(R.id.MenuView)
 
         //recyclerView.adapter = DishesAdapter(this, myDataset)
         //recyclerView.setHasFixedSize(true)
 
-        val btnBack= findViewById<Button>(R.id.btnGoBack)
-        btnBack.setOnClickListener {
-            val intent = Intent(this, Menu::class.java)
-            startActivity(intent)
-          }
 
     }
-
-
     }
