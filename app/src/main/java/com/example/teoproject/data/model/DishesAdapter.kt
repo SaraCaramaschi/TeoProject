@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.teoproject.R
-import com.google.firebase.firestore.auth.User
+//import com.google.firebase.firestore.auth.User
 import kotlinx.android.synthetic.main.item_todo.view.*
 import java.nio.file.attribute.UserDefinedFileAttributeView
 

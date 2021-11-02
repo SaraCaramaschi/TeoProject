@@ -4,17 +4,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.teoproject.managers.PatientsManager
-import com.example.teoproject.managers.PatientsManager.patientsList
 import com.example.teoproject.model.Patient
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_add_patient.*
 import kotlinx.serialization.encodeToString
 
-import org.jetbrains.anko.toast
-import timber.log.Timber
 import java.io.File
 
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 

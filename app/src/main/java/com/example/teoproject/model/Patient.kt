@@ -1,9 +1,10 @@
 package com.example.teoproject.model
 
+import androidx.annotation.Keep
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.encodeToString
 
+
+@Keep
 @Serializable // arriva da qui https://kotlinlang.org/docs/serialization.html#example-json-serialization
 data class Patient( // ora ci sono 4 input
     var name: String,

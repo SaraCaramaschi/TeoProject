@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddPatientActivity"
-    tools:ignore="MissingDefaultResource">
+    tools:context=".AddPatientActivity">
 
     <LinearLayout
         android:id="@+id/LinearLayout0"
@@ -121,16 +120,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/LinearLayout3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="45dp">
-
 
             <TextView
                 android:id="@+id/tvGender"
@@ -141,18 +130,7 @@
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Spinner
-                android:id="@+id/spinnerGender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:minHeight="48dp"
-                android:entries="@array/gender"
-                app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
-
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/LinearLayout4"
@@ -215,15 +193,6 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>
-        <LinearLayout
-            android:id="@+id/LinearLayout6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            tools:layout_editor_absoluteX="45dp"
-            android:layout_marginTop="4dp">
 
             <TextView
                 android:id="@+id/tvHand"
@@ -234,17 +203,6 @@
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Spinner
-                android:id="@+id/spinnerDominantHand"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:minHeight="48dp"
-                android:entries="@array/dominanthand"
-                app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </LinearLayout>
         <LinearLayout
             android:id="@+id/LinearLayout7"
             android:layout_width="match_parent"
