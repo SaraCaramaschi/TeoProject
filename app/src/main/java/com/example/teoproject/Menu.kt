@@ -16,11 +16,17 @@ class Menu : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val btnMainCourses = findViewById<Button>(R.id.btnMain) // funziona
-        btnMainCourses.setOnClickListener {
-            val intent = Intent(this, MainCourses::class.java)
+        // bottone LISTA PAZIENTI
+        val btnPatients = findViewById<Button>(R.id.btnPatients)
+        btnPatients.setOnClickListener {
+            val intent = Intent(this, PatientsListActivity::class.java)
             startActivity(intent)
         }
+
+        //val btnMainCourses = findViewById<Button>(R.id.btnMain) // funziona
+        //btnMainCourses.setOnClickListener {
+        //    val intent = Intent(this, MainCourses::class.java)
+        //    startActivity(intent) }
 
 
     }
