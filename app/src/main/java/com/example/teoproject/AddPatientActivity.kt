@@ -54,7 +54,7 @@ class AddPatientActivity : AppCompatActivity() {
             // Add patient
             PatientsManager.addPatient( // ora ci sono 4 input (anche nella data class)
                Patient(etName.text.toString(), etSurname.text.toString(),
-                etNotes.text.toString(), etTax.text.toString()) )
+                etNotes.text.toString(), etTax.text.toString(), etBirthDate.text.toString()) )
 
             /* Create Json file
             PatientsManager.createJson(Patient(etName.text.toString(), etSurname.text.toString(),
@@ -64,7 +64,8 @@ class AddPatientActivity : AppCompatActivity() {
                     etName.text.toString(),
                     etSurname.text.toString(),
                     etNotes.text.toString(),
-                    etTax.text.toString()
+                    etTax.text.toString(),
+                    etBirthDate.text.toString()
                 )
             )
 

@@ -22,5 +22,5 @@ data class Patient( // ora ci sono 4 input
     // var dominantHand: Hand,
     // var gender: Gender
     // var phase: String
-    // var birthdate: String,
+    var birthdate: String,
 )
