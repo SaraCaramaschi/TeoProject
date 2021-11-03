@@ -36,12 +36,12 @@ class PatientsListActivity : AppCompatActivity() {
         // set dialog
         val btnNewPatient = findViewById<Button>(R.id.btnNewPatient)
         btnNewPatient.setOnClickListener {
-            //val intent = Intent(this, AddPatientActivity::class.java)
-            //startActivity(intent)
-            addInfo()
+            val intent = Intent(this, AddPatientActivity::class.java)
+            startActivity(intent)
+            //addInfo()
             }
         }
-    private fun addInfo(){
+    /*private fun addInfo(){
         val inflater = LayoutInflater.from(this)
         val v = inflater.inflate(R.layout.activity_add_patient,null)
         // setting the view
@@ -73,5 +73,5 @@ class PatientsListActivity : AppCompatActivity() {
         }
         addDialog.create()
         addDialog.show()
-    }
+    }*/
 }

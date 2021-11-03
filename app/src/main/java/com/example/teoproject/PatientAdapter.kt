@@ -32,12 +32,12 @@ class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
                 /*val position: Int = adapterPosition
                 Toast.makeText(itemView.context, "you clicked on ${patientsName[position]} ", Toast.LENGTH_LONG).show()
                 // codice che fa passare a profilo del paziente*/
-                popupmenus(it)
+                //popupmenus(it)
             }
         }
 
         // https://github.com/farida-techie/EditDeleteItem/blob/master/app/src/main/java/com/malkinfo/editingrecyclerview/view/UserAdapter.kt
-        @SuppressLint("ResourceType")
+        /*@SuppressLint("ResourceType")
         private fun popupmenus(v:View){
             val position = patientsList[adapterPosition]
             //TODO problema context
@@ -73,7 +73,7 @@ class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
 
                 }
             }
-        }
+        } */
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapter.ViewHolder {
