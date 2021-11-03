@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.teoproject.model.Patient
+import org.jetbrains.anko.intentFor
 
 //import com.example.cpsproject.databinding.ActivityMainConnectionBinding
 //import com.example.cpsproject.databinding.ActivityPatientsList4Binding
@@ -22,6 +23,9 @@ class PatientsListActivity : AppCompatActivity() {
     lateinit var rvPatients: RecyclerView
     private lateinit var patientList:ArrayList<Patient>
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patients_list)
@@ -31,7 +35,6 @@ class PatientsListActivity : AppCompatActivity() {
         rvPatients.layoutManager = layoutMan
         patientAdapter = PatientAdapter()
         rvPatients.adapter = patientAdapter
-        patientList = ArrayList()
 
         // set dialog
         val btnNewPatient = findViewById<Button>(R.id.btnNewPatient)

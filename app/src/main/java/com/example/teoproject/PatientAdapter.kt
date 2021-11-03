@@ -3,18 +3,27 @@ package com.example.teoproject
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.teoproject.managers.PatientsManager.patientsList
-
+import com.example.teoproject.managers.PatientsManager
+import com.example.teoproject.model.Patient
+/*
 class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
 
      private var patientsName = arrayOf("Mario Rossi", "Alfonso Maisano","Vittoria Attolini","Lino Piso","Mario Rossi", "Alfonso Maisano","Vittoria Attolini","Lino Piso")
      private var patientsPhase = arrayOf("Phase1","Phase1","Phase2","Phase 1","Phase1","Phase1","Phase2","Phase 1")
      private var patientsItems = intArrayOf(R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user)
+    //lateinit var patientsName: ArrayList<String>
+    //lateinit var patientsSurname: ArrayList<String>
+    //lateinit var patientsPhase: ArrayList<String>
+
+     var patientList: MutableList<Patient> = PatientsManager.patientsList
+
 
 
     inner class ViewHolder(itemView: View ): RecyclerView.ViewHolder(itemView){
@@ -89,5 +98,56 @@ class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int {
        return patientsName.size
+    }
+}
+ */
+
+class FlowersAdapter(private val onClick: (Patient) -> Unit) :
+        ListAdapter<Patient, PatientAdapter.PatientViewHolder>(PatientDiffCallback) {
+
+        /* ViewHolder for Flower, takes in the inflated view and the onClick behavior. */
+        class PatientViewHolder(itemView: View, val onClick: (Patient) -> Unit) :
+            RecyclerView.ViewHolder(itemView) {
+            private val nameTextView: TextView = itemView.findViewById(R.id.etName)
+            private var currentPatient: Patient? = null
+
+            init {
+                itemView.setOnClickListener {
+                    currentPatient?.let {
+                        onClick(it)
+                    }
+                }
+            }
+
+            /* Bind flower name and image. */
+            fun bind(patient: Patient) {
+                currentPatient = patient
+                nameTextView.text = patient.name
+            }
+        }
+
+        /* Creates and inflates view and return FlowerViewHolder. */
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientViewHolder {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.activity_add_patient, parent, false)
+            return PatientViewHolder(view, onClick)
+        }
+
+        /* Gets current flower and uses it to bind view. */
+        override fun onBindViewHolder(holder: PatientViewHolder, position: Int) {
+            val patient = getItem(position)
+            holder.bind(patient)
+
+        }
+    }
+
+    object FlowerDiffCallback : DiffUtil.ItemCallback<Patient>() {
+        override fun areItemsTheSame(oldItem: Patient, newItem: Patient): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: Patient, newItem: Patient): Boolean {
+            return oldItem.name == newItem.name
+        }
     }
 }
