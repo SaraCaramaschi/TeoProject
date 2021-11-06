@@ -2,6 +2,7 @@ package com.example.teoproject
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.bluetooth.BluetoothGattCharacteristic
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -10,20 +11,56 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
 import com.example.teoproject.managers.PatientsManager
 import com.example.teoproject.model.Patient
-/*
-class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
+import kotlinx.android.synthetic.main.activity_add_patient.view.*
+import org.jetbrains.anko.layoutInflater
 
+class PatientAdapter(
+    private val items: ArrayList<Patient>,
+    private val onClickListener: ((patient: Patient) -> Unit)
+): RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = parent.context.layoutInflater.inflate(
+            R.layout.activity_patient,
+            parent,
+            false
+        )
+        return ViewHolder(view, onClickListener)
+    }
+
+    override fun getItemCount() = items.size
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = items[position]
+        holder.bind(item)
+    }
+
+    class ViewHolder(
+        private val view: View,
+        private val onClickListener: ((patient: Patient) -> Unit)
+    ) : RecyclerView.ViewHolder(view) {
+
+        fun bind(patient: Patient) {
+            patient.name.also { view.etName.text }
+            patient.surname.also { view.etSurname.text }
+
+        }
+    }
+}
+
+/* VERSIONE OK NON AUTOMATICA
      private var patientsName = arrayOf("Mario Rossi", "Alfonso Maisano","Vittoria Attolini","Lino Piso","Mario Rossi", "Alfonso Maisano","Vittoria Attolini","Lino Piso")
      private var patientsPhase = arrayOf("Phase1","Phase1","Phase2","Phase 1","Phase1","Phase1","Phase2","Phase 1")
      private var patientsItems = intArrayOf(R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user)
+
     //lateinit var patientsName: ArrayList<String>
     //lateinit var patientsSurname: ArrayList<String>
     //lateinit var patientsPhase: ArrayList<String>
 
      var patientList: MutableList<Patient> = PatientsManager.patientsList
-
 
 
     inner class ViewHolder(itemView: View ): RecyclerView.ViewHolder(itemView){
@@ -44,45 +81,6 @@ class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
                 //popupmenus(it)
             }
         }
-
-        // https://github.com/farida-techie/EditDeleteItem/blob/master/app/src/main/java/com/malkinfo/editingrecyclerview/view/UserAdapter.kt
-        /*@SuppressLint("ResourceType")
-        private fun popupmenus(v:View){
-            val position = patientsList[adapterPosition]
-            //TODO problema context
-            val popupMenus = PopupMenu(this,v)
-            popupMenus.inflate(R.layout.activity_add_patient)
-            popupMenus.setOnMenuItemClickListener {
-                when(it.itemId){
-                    R.id.etName -> { val v = LayoutInflater.from(this).inflate(R.layout.activity_add_patient, null)
-                        val name = v.findViewById<EditText>(R.id.etName)
-                        // TODO prosegui con altre variabili
-                        //val surname = v.findViewById<EditText>(R.id.etSurname)
-                        AlertDialog.Builder(this)
-                            .setView(v)
-                            .setPositiveButton("Ok"){
-                                    dialog,_->
-                                position.name = name.text.toString()
-                                //position.surname = number.text.toString()
-                                notifyDataSetChanged()
-                                Toast.makeText(this, "User Information is Edited", Toast.LENGTH_SHORT).show()
-                                dialog.dismiss()
-
-                            }
-                            .setNegativeButton("Cancel"){
-                                    dialog,_->
-                                dialog.dismiss()
-
-                            }
-                            .create()
-                            .show()
-                        true
-                    }
-                    //TODO R.id.delete
-
-                }
-            }
-        } */
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapter.ViewHolder {
@@ -100,10 +98,13 @@ class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
        return patientsName.size
     }
 }
- */
+ VERSIONE OK NON AUTOMATICA */
 
-class FlowersAdapter(private val onClick: (Patient) -> Unit) :
-        ListAdapter<Patient, PatientAdapter.PatientViewHolder>(PatientDiffCallback) {
+
+/*
+class PatientAdapter(private val onClick: (Patient) -> Unit) :
+        RecyclerView.Adapter<PatientAdapter.PatientViewHolder>() {
+        //ListAdapter<PatientAdapter.PatientViewHolder>(PatientDiffCallback) {
 
         /* ViewHolder for Flower, takes in the inflated view and the onClick behavior. */
         class PatientViewHolder(itemView: View, val onClick: (Patient) -> Unit) :
@@ -135,19 +136,16 @@ class FlowersAdapter(private val onClick: (Patient) -> Unit) :
 
         /* Gets current flower and uses it to bind view. */
         override fun onBindViewHolder(holder: PatientViewHolder, position: Int) {
-            val patient = getItem(position)
+            val patient: Patient = getItem(position)
             holder.bind(patient)
-
         }
     }
 
-    object FlowerDiffCallback : DiffUtil.ItemCallback<Patient>() {
-        override fun areItemsTheSame(oldItem: Patient, newItem: Patient): Boolean {
-            return oldItem == newItem
-        }
-
-        override fun areContentsTheSame(oldItem: Patient, newItem: Patient): Boolean {
-            return oldItem.name == newItem.name
-        }
+object PatientDiffCallback : DiffUtil.ItemCallback<Patient>() {
+    override fun areItemsTheSame(oldItem: Patient, newItem: Patient): Boolean {
+        return oldItem == newItem
     }
-}
+
+    override fun areContentsTheSame(oldItem: Patient, newItem: Patient): Boolean {
+        return oldItem.name == newItem.name
+    }*/

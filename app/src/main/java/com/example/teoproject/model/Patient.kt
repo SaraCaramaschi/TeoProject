@@ -1,5 +1,6 @@
 package com.example.teoproject.model
 
+import android.bluetooth.BluetoothGattCharacteristic
 import androidx.annotation.Keep
 import kotlinx.serialization.Serializable
 
@@ -23,4 +24,6 @@ data class Patient( // ora ci sono 4 input
     // var gender: Gender
     // var phase: String
     var birthdate: String,
+    var phase: Int = 1
 )
+

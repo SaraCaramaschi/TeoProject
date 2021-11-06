@@ -1,62 +1,54 @@
 package com.example.teoproject.managers
 
-import android.annotation.SuppressLint
-import android.content.Context.MODE_PRIVATE
-import android.content.Intent
-import android.util.Log
-import android.widget.Toast
-import com.example.teoproject.PatientAdapter
+import android.content.Context
 import com.example.teoproject.model.Patient
 import com.google.gson.Gson
-
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
-import java.io.ObjectOutputStream
+import timber.log.Timber
+import java.io.*
 
 
 object PatientsManager {
+    public var patientsList: ArrayList<Patient> = ArrayList()
 
-    /*private fun writeObject(stream: ObjectOutputStream){
-        throw IOException
-        https://developer.android.com/reference/kotlin/java/io/ObjectOutputStream
-    }*/
-
-    public var patientsList: MutableList<Patient> = ArrayList()
-
-    public fun addPatient(patient: Patient) {
-        //patientsList.add(patient)
-/*
-        const val NOME = "name"
-        const val COGNOME = "surname"
-        const val TAX = "tax"
-        const val COMPLE = "birth"
-        const val NOTE = "notes"
-
- */
-
+    public fun addPatient(patient: Patient, context: Context) {
+        patientsList.add(patient)
+        savePatient(patient, context)
     }
 
+    public fun savePatient(patient: Patient, context: Context) {
+        val gson= Gson()
+        val jsonPatient= gson.toJson(patient)
+
+        Timber.d("json %s", jsonPatient)
 
 
-    public fun createJson(patient: Patient) {
-        val json = Json.encodeToString(patient)
-        Log.d("This is the json data:", json)
+        var fileName = context.filesDir.path.toString() + "/" + patient.taxcode + ".txt"
+        var file = File(fileName) // cartella uguale ma con una roba in più
+
+        val createdFile = file.createNewFile()
+        Timber.d("Il filename e': %s",fileName)
+        Timber.d("the file is created %s", createdFile)
+        Timber.d("path %s", file.absolutePath)
+
+        file.writeText(jsonPatient)
+        Timber.d("questo è il file lettooo %s", readPatient(fileName))
     }
 
-    public fun saveJson(json: String){
-        /*
-        val fos = FileOutputStream("t.tmp")
-        val oos = ObjectOutputStream(fos)
-
-        oos.writeObject("Today")
-        oos.close()*/
+    public fun readPatient(fileName : String) : String {
+        // la funzione readPatient funziona! quindi il file viene creato e salvato da qualche parte veramente
+        // il nome del file è per esempio taxcode, ma al suo interno ha tutti i dati del json. perfetto
+        return File(fileName).readText(Charsets.UTF_8)
     }
 
+    public fun readLastPatient() {
+        var lastPatient = patientsList.last()
+        var taxcode = lastPatient.taxcode
 
+        var file = File(taxcode)
 
-    public fun fillData() {}
-
+        //ottengo json da file
+        //encode json in classe Patient
+        //stampa tutti i campi
+        //chiamo in un modo la classe poi faccio Timber.d( nomedellaclasse.nome + ...)
+    }
 }
